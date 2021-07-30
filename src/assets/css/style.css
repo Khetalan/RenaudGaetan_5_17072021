@@ -1,0 +1,18 @@
+/*--- VARIABLE CREATE ---*/
+
+.bg-orinoco{
+    background-color: #f3e9f1 !important;
+}
+.vert-align-center{
+    align-items: center;
+}
+.justify-center{
+    justify-content: center;
+}
+.size-47{
+    width: 47%;
+}
+
+.rad-50px{
+    border-radius: 50px;
+}
