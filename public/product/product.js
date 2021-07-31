@@ -12,10 +12,12 @@ fetch(`http://localhost:3000/api/cameras/${search_params}`)
         const productTarget = document.getElementById("product-target")
 
         const lenses = camera.lenses;
-        lenses.forEach(lense => {
-            
-        });
+        let text = "";
 
+        lenses.forEach(l => {
+            text = text + `<li><a class="dropdown-item" href="#">${l}</a></li>`    
+        });
+        console.log(text);
         productTarget.innerHTML = 
             `<div class="card mt-3 mb-3 size-47">
                 <div class="row g-0 align-items-center">
@@ -28,13 +30,10 @@ fetch(`http://localhost:3000/api/cameras/${search_params}`)
                             <p class="card-text">${camera.description}</p>
                             <div class="dropdown">
                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown link
+                                    Options lentilles :
                                 </a>
-
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    ${text}
                                 </ul>
                             </div>
                             <p class="card-text"><small class="text-muted fs-6">${'Prix : ' + (camera.price / 100) + '€'}</small></p>
