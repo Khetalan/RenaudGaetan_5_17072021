@@ -16,7 +16,7 @@ fetch("http://localhost:3000/api/cameras")
             <div class="row g-0 align-items-center">
                 <div class="col-md-4 ">
                     <a href="../product/product.html?camera=${camera._id}">
-                        <img src="${camera.imageUrl}" class="img-fluid rounded-start" alt="...">
+                        <img src="${camera.imageUrl}" class="img-fluid img-thumbnail rounded-start" alt="...">
                     </a>
                     
                 </div>
@@ -25,6 +25,7 @@ fetch("http://localhost:3000/api/cameras")
                         <h5 class="card-title">${camera.name}</h5>
                         <p class="card-text">${camera.description}</p>
                         <p class="card-text"><small class="text-muted fs-6">${'Prix : ' + (camera.price / 100) + '€'}</small></p>
+                        <a href="../product/product.html?camera=${camera._id}"><button class="btn btn-primary btn-s" type="button">Détail</button></a>
                     </div>
                 </div>
                 </div>
