@@ -16,3 +16,8 @@
 .rad-50px{
     border-radius: 50px;
 }
+.size-25{
+    font-size: 18px;
+    width: 25px;
+    height: 25px;
+}
