@@ -15,19 +15,24 @@ fetch("http://localhost:3000/api/cameras")
     .then(function(response){
         return response.json();
     })
-    
+    //Ici je crée et recup le LocalStorage avec PARSE sur mon Items "Panier" (array de product)
     const panierShop = JSON.parse(localStorage.getItem("panier"));
+
+    //Je crée une constante pour définir la section HTML "Shop-list"
     const shopList = document.getElementById("shop-list")
     
-    //panierShop.forEach(element => {});
+    //Boucle FOR pour itéré chaque éléments de mon Panier(const panierShop)
     for (let index = 0; index < panierShop.length; index++) {
         
+        //Je défini chaque([index]) ITEM ou produit (buying) du panier (panierShop)
         const buying = panierShop[index];
 
         console.log(buying)
 
+        
         const textShop = "";
-
+            //On Inject le HTML pour afficher sur le site + Interpolation pour afficher chaque produits différents
+            // + Ajout des petit bouton + et - pour modifier la quantité du produit
             shopList.innerHTML += 
             `<div id="camera${index}" class="card mt-3 mb-3 w-100 p-3">
                 <div class="row g-0 align-items-center">
@@ -59,16 +64,21 @@ fetch("http://localhost:3000/api/cameras")
                 </div>
             </div>`;
 
+            //Ont défini un LET pour le bouton ADD de CHAQUE ITEMS
             let addBtn = document.getElementById(`add${index}`)
-            
+            //Ont défini un LET pour le bouton REMOVE de CHAQUE ITEMS
             let removeBtn = document.getElementById(`remove${index}`)
 
+            //Ajout d'un regard d'évenement sur le clique du bouton (+) ET modification du HTML en consequence
             addBtn.addEventListener('click', (event) => {
                     panierShop[index].quantity++;
                     window.localStorage.setItem("panier", JSON.stringify(panierShop))
                     document.getElementById(`quantity${index}`).innerHTML = panierShop[index].quantity;
                 }
             )
+
+            //Ajout d'un regard d'évenement sur le clique du bouton (-)
+            //Condition IF/ELSE pour supprimée un élement du panier "si passage de 2 vers 1   OU    1 vers 0"
             removeBtn.addEventListener('click', (event) => {
                     if(panierShop[index].quantity > 1){
 
@@ -77,11 +87,13 @@ fetch("http://localhost:3000/api/cameras")
                         document.getElementById(`quantity${index}`).innerHTML = panierShop[index].quantity;
 
                     }else{
-
+                        //METHODE -- SPLICE -- pour modifier le contenu d'un tableau avec ajout ou retrait d'un items
+                        //(possible de vider ou remplacer une parti d'un tableau) 
                         panierShop.splice(index, 1)
                         let cameraIndex = document.getElementById(`camera${index}`)
                         cameraIndex.parentNode.removeChild(cameraIndex)
                     }
+                    //Affichage du panier sur la page après avoir réduit la quantité ou suprimée un ITEMS
                     window.localStorage.setItem("panier", JSON.stringify(panierShop))
                 }
             )
