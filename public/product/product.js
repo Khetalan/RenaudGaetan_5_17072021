@@ -36,10 +36,11 @@ fetch(`http://localhost:3000/api/cameras/${search_params}`)
                             <select class="form-select" aria-label="Options Lentilles :">
                                 ${text}
                             </select>
-                            <p class="card-text"><small class="text-muted fs-6">${'Prix : ' + (camera.price / 100) + '€'}</small></p>
-                            <button class="btn btn-primary btn-lg addShop" type="button">Ajouter au panier</button>
-
+                            <p class="card-text mt-3"><small class="text-muted fs-6">${'Prix : ' + (camera.price / 100) + '€'}</small></p>
+                            <button class="btn bg-orinoco btn-lg addShop" type="button">Ajouter au panier</button>
+                            
                         </div>
+                        <a href="../index/index.html"><button type="button" class="btn btn-primary mt-4">Continuer mes Achats</button></a>
                     </div>
                 </div>
                 </div>`
@@ -87,10 +88,10 @@ fetch(`http://localhost:3000/api/cameras/${search_params}`)
 
                         //ETAPE 4 = Set à nouveau le nouvelle ITEM (panier) dans le LocalStorage
                         localStorage.setItem('panier', JSON.stringify(prodBuy))
-                    })
-                        //ETAPE 5 = Ajout de la Notion de quantité (verifier si deja présent)
-                        //if(prodBuy = index[0]){
-                            //localStorage.setItem('basket', JSON.stringify(prodBuy)++)
-                        //}
-                        
+
+                        //ETAPE 5 = Actualisé la page pour mettre à jour le panier
+
+                        window.location.reload();
+
+                    })       
     })
