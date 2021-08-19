@@ -21,9 +21,8 @@ You will need to have Node and `npm` installed locally on your machine.
     celui-ci devrait afficher dans le terminal `Listening on port 3001`)(Il fonctionnera pour les données de l'API fourni avec le Projet)
     
 4 - Démmarer le FRONT-END :
-
     4.1 - Entrer dans le dossier du repo `../RenaudGaetan_5_17072021`
-    4.2 - Dossier `public` puis `index` enfin `index.html`
+    4.2 - Dossier `public` puis `index` enfin `index.html`.
     
 ### Commentaire ###
 
