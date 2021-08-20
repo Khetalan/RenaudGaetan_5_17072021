@@ -42,10 +42,10 @@
       </div>
       
       <section id="formValid">
-        <form submit="return sendOrderCustomer(event)" class="row g-3 needs-validation was-validated" novalidate>
+        <form id="orderForms" class="row g-3 needs-validation" novalidate>
           <div class="col-md-6">
             <label for="validationCustom01" class="form-label">Prénom</label>
-            <input id="first-name-customer" type="text" class="form-control" id="validationCustom01" value="" required>
+            <input id="first-name-customer" type="text" class="form-control" id="validationCustom01" pattern="[a-zA-Z-àáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{1,}" required>
             <div class="valid-feedback">
               C'est bon !
             </div>
@@ -55,7 +55,7 @@
           </div>
           <div class="col-md-6">
             <label for="validationCustom02" class="form-label">Nom</label>
-            <input id="last-name-customer" type="text" class="form-control" id="validationCustom02" value="" required>
+            <input id="last-name-customer" type="text" class="form-control" id="validationCustom02" pattern="[a-zA-Z-àáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{1,}" required>
             <div class="valid-feedback">
             Cela aussi !
             </div>
@@ -65,7 +65,7 @@
           </div>
           <div class="col-md-12">
             <label for="validationCustom06" class="form-label">Adresse</label>
-            <input id="adress-customer" type="text" class="form-control" id="validationCustom06" required>
+            <input id="adress-customer" type="text" class="form-control" id="validationCustom06" pattern="[a-zA-Z0-9-àáâãäåçèéêëìíîïðòóôõöùúûüýÿ ]{1,}" required>
             <div class="valid-feedback">
               C'est noté !
             </div>
@@ -77,7 +77,7 @@
             <label for="validationCustomUsername" class="form-label">Email</label>
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend">@</span>
-              <input id="email-customer" type="email" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+              <input id="email-customer" type="email" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" pattern="[a-zA-Z0-9.@_-]{1,}" required>
               <div class="valid-feedback">
                 C'est noté !
               </div>
@@ -87,8 +87,8 @@
             </div>
           </div>
           <div class="col-md-3">
-            <label for="validationCustom03" class="form-label">ville</label>
-            <input id="city-customer" type="text" class="form-control" id="validationCustom03" required>
+            <label for="validationCustom03" class="form-label">Ville</label>
+            <input id="city-customer" type="text" class="form-control" id="validationCustom03" pattern="[a-zA-Z-àáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{1,}" required>
             <div class="valid-feedback">
               C'est noté !
             </div>
@@ -97,23 +97,23 @@
             </div>
           </div>
           <div class="col-md-3">
-            <label for="validationCustom05" class="form-label">Zip</label>
-            <input id="zip-customer" type="text" class="form-control" id="validationCustom05" required>
+            <label for="validationCustom05" class="form-label">Code Postal</label>
+            <input id="zip-customer" type="text" class="form-control" id="validationCustom05"required>
             <div class="valid-feedback">
               C'est noté !
             </div>
             <div class="invalid-feedback">
-              Entrer votre Code Postale (ex:69000)
+              Entrer votre Code Postal (ex:69000)
             </div>
           </div>
           <div class="col-12">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
               <label class="form-check-label" for="invalidCheck">
-                Agree to terms and conditions
+                Accepter les Termes et Conditions
               </label>
               <div class="invalid-feedback">
-                You must agree before submitting.
+                Vous avez besoin d'accepter avant de soumettre.
               </div>
             </div>
           </div>
