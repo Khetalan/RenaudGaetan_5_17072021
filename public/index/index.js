@@ -31,9 +31,8 @@ fetch("http://localhost:3000/api/cameras")
                 </div>
             </div>`;    
         }
-        //Ajout du TEXT dans le index.html
 
+        //Ajout du TEXT dans le index.html
         listProducts.innerHTML = text;
 
-        
     })

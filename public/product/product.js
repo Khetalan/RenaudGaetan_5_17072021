@@ -1,4 +1,4 @@
-// Ont determine l'adresse URL
+// Ont determine l'adresse URL via le '_id' de l'API
 let url = new URL(window.location.href);
 
 let search_params = url.searchParams.get('camera');

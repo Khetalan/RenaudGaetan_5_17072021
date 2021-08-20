@@ -1,6 +1,10 @@
 
 JSON.parse(localStorage.getItem("panier"))
-console.log(JSON.parse(localStorage.getItem("panier")));
+//console.log(JSON.parse(localStorage.getItem("panier")));
+
+//########################################################################
+//########################################################################
+//########################################################################
 
 fetch("http://localhost:3000/api/cameras")
     .then(function(response){
@@ -54,11 +58,16 @@ fetch("http://localhost:3000/api/cameras")
 
         }
 
+//########################################################################
+//########################################################################
+//########################################################################
 
-//On Injecte la fonction pour le résulat entre le Price*Quantity dans le TEXTE du HTML      
+//On Injecte la fonction pour le résulat entre le Price*Quantity dans le TEXTE du HTML(A coter du Logo Panier>(0)<)      
 document.querySelector('#total').textContent = totalProductPrice();
 
-
+//########################################################################
+//########################################################################
+//########################################################################
 
 //Ont défini un LET pour le bouton ADD de CHAQUE ITEMS
 let listAddBtn = document.querySelectorAll('.add')
@@ -68,6 +77,7 @@ let listRemoveBtn = document.querySelectorAll('.remove')
 
 //Ont défini un LET pour la QUANTITY
 let listinfoQuantity = document.querySelectorAll('.quantity')
+
 
 listAddBtn.forEach((addBtn, index) => {
     //Ajout d'un regard d'évenement sur le clique du bouton (+) ET modification du HTML en consequence
@@ -84,6 +94,9 @@ listAddBtn.forEach((addBtn, index) => {
     }
 )
 });
+//########################################################################
+//########################################################################
+//########################################################################
 
 listRemoveBtn.forEach((removeBtn, index) => {
     //Ajout d'un regard d'évenement sur le clique du bouton (-)
@@ -112,6 +125,10 @@ listRemoveBtn.forEach((removeBtn, index) => {
         
     })   
 });
+
+//########################################################################
+//########################################################################
+//########################################################################
 
 //----- Bouton "VALIDER LA COMMANDE" + fonction Récup Details du client -----
 let sendBtn = document.querySelector('#submit-btn')
