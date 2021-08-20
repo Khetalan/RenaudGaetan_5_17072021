@@ -1,3 +1,7 @@
+//########################################################################
+//########################################################################
+//########################################################################
+
 //----- AJOUT DE LA QUANTITER SUR CHAQUE PRODUIT -----
 function getTotalQuantityLocalStorage(){
     const panierShop = JSON.parse(window.localStorage.getItem('panier'))
@@ -10,9 +14,18 @@ function getTotalQuantityLocalStorage(){
     return quantity;
     
 }
+
+//########################################################################
+//########################################################################
+//########################################################################
+
 //---Pour afficher la quantité du panier dans l'icone PANIER---
 
 document.querySelector('.info-shop').innerHTML = getTotalQuantityLocalStorage();
+
+//########################################################################
+//########################################################################
+//########################################################################
 
 //----- CALCUL DE PRIX TOTAL DU PANIER -----
 
@@ -32,6 +45,10 @@ function totalProductPrice(){
     return totalPriceProduct / 100;
 }
 
+//########################################################################
+//########################################################################
+//########################################################################
+
 //----- CALCUL PRIX PRODUIT COMMANDE ----
 function totalOrderProductPrice(){
     const orderShop = JSON.parse(window.sessionStorage.getItem('orderBuy'))
@@ -39,27 +56,38 @@ function totalOrderProductPrice(){
     //Crée de la variable qui commence à 0 pour la somme de tout les product
     let totalPriceProduct = 0;
 
-    for (let index = 0; index < orderShop.products.length; index++) {
+    for (let index = 0; index < orderShop.contact.basket.length; index++) {
 
-        const priceProduct = orderShop.products[index].price * orderShop.products[index].quantity;
+        const priceProduct = orderShop.contact.basket[index].price * orderShop.contact.basket[index].quantity;
 
         totalPriceProduct = totalPriceProduct + priceProduct
            
     }
     return totalPriceProduct / 100;
 }
+
+//########################################################################
+//########################################################################
+//########################################################################
+
 //----- FONCTION -FETCH POST- POUR ENVOIE FORMULAIRE + PANIER -----
 function sendOrderCustomer(e){
-    e.preventDefault();
     
-    //On défini un LET pour chaque INPUT du FORMULAIRE
-    let customerFirstName = document.querySelector("#first-name-customer").value;
-    let customerLastName = document.querySelector("#last-name-customer").value;
-    let customerAdress = document.querySelector("#adress-customer").value;
-    let customerEmail = document.querySelector("#email-customer").value;
-    let customerCity = document.querySelector("#city-customer").value;
-    let customerZip = document.querySelector("#zip-customer").value;
+    e.preventDefault();
+
+    const orderForm = document.getElementById('orderForms');
+
+    orderForm.classList.add('was-validated')
+
+    if (!orderForm.checkValidity()) {
+        return;
+    }
+
+    //On défini un LET pour le CHECKBOX (Agree Terms) du Formulaire
+    
     let btnRulesForm = document.querySelector("#invalidCheck").checked;
+
+
     // on recupere les id de produits
     let panier =JSON.parse(localStorage.getItem('panier'))
     //console.log(panier);
@@ -67,21 +95,22 @@ function sendOrderCustomer(e){
     let tabProductId = []
 
     panier.forEach(element=> tabProductId.push(element._id))
-    
-    //console.log(tabProductId);
+
+    console.log(tabProductId);
 
     const body = {
         contact: {
-            firstName: customerFirstName,
-            lastName: customerLastName,
-            address: customerAdress,
-            city: customerCity,
-            zip : customerZip,
-            email: customerEmail
+            firstName: document.querySelector("#first-name-customer").value,
+            lastName: document.querySelector("#last-name-customer").value,
+            address: document.querySelector("#adress-customer").value,
+            city: document.querySelector("#city-customer").value,
+            zip : document.querySelector("#zip-customer").value,
+            email: document.querySelector("#email-customer").value,
+            basket : panierShop
         },
         products: tabProductId
     }
-    //console.log(body);
+    console.log(body);
 
     fetch('http://localhost:3000/api/cameras/order', {
         method: 'post',
@@ -90,9 +119,6 @@ function sendOrderCustomer(e){
         }, 
         body: JSON.stringify(body)})
 
-        /*.then(res => res.json())
-        .then(data => console.log(data))
-}*/
         .then(function(response) {
             if (btnRulesForm == true) {
                 return response.json();
@@ -102,14 +128,12 @@ function sendOrderCustomer(e){
             window.sessionStorage.setItem('orderBuy', JSON.stringify(orderBuy));
             //localStorage.clear();
             if (orderBuy == null) {
-                alert('CECI APPARAIT  -- TES DANS LA MERDE')
+                alert("Vous n'avez pas fini remplir le formulaire !")
             }else{
-                //alert("WIIIIIIIIIIIIIIIINNNNNNNNNNNNNNNNNNNNNNNNNEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRRRRRR")         
                 window.location.assign("http://127.0.0.1:5500/RenaudGaetan_5_17072021/public/order/order.html");
-                //window.localStorage.clear();
+                window.localStorage.clear();
                 console.log(orderBuy);
             }
-            
         })
         .catch(function(error) { 
             console.error(error)
