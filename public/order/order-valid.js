@@ -5,7 +5,7 @@ console.log(orderShop);
 
 //ICI Je crée une liaision avec mon HTML 
 const orderCustomer = document.querySelector('#detail-customer')
-console.log(orderCustomer);
+//console.log(orderCustomer);
 
 //ICI j'injecte mon HTML avec les donnée de "orderBuy"
 orderCustomer.innerHTML = 
@@ -15,31 +15,10 @@ orderCustomer.innerHTML =
     <p class="px-3">Adresse de Livraison :<br><span class=" card w-25 bg-orinoco">${orderShop.contact.lastName}<br>${orderShop.contact.firstName}<br>${orderShop.contact.address}<br>${orderShop.contact.zip}<br>${orderShop.contact.city}</span></p>
     </div>`
 ;
-//----- FONCTION VALIDATION FORMULAIRE -----
 
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-/*(function validDetailCustomer() {
-    'use strict'
-  
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.needs-validation')
-  
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-  
-          form.classList.add('was-validated')
-        }, false)
-      })
-  })()*/
-
-
-//---------------------------------------
+//########################################################################
+//########################################################################
+//########################################################################
 
 //----- FONCTION AFFICHAGE RESUMER COMMANDE -----
 
@@ -50,14 +29,8 @@ const panierShop = JSON.parse(localStorage.getItem("panier"));
 const orderList = document.querySelector("#order-buy");
 
 //Boucle FOR pour itéré chaque éléments de mon Panier(const panierShop)
-for (let index = 0; index < panierShop.length; index++) {
+for (let index = 0; index < orderShop.contact.basket.length; index++) {
         
-    //Je défini chaque([index]) ITEM ou produit (buying) du panier (panierShop)
-    //const buying = panierShop[index];
-
-    //console.log(buying)
-
-    
     //On Inject le HTML pour afficher sur le site + Interpolation pour afficher chaque produits différents
     
     orderList.innerHTML += 
@@ -65,31 +38,35 @@ for (let index = 0; index < panierShop.length; index++) {
         <div class="row g-0 align-items-center justify-content-center">
             <div class="col-md-3 ">
                 <div class="card-text">
-                    <h5 class="card-title">${panierShop[index].name}</h5>
+                    <h5 class="card-title">${orderShop.contact.basket[index].name}</h5>
                 </div>                    
             </div>
             <div class="col-md-3">
                 <div>
-                    <p class="card-text">${'Prix : ' + (panierShop[index].price / 100) + '€'}</p>
+                    <p class="card-text">${'Prix : ' + (orderShop.contact.basket[index].price / 100) + '€'}</p>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class=" d-flex align-items-center justify-content-center">
-                    <p class="quantity card-text mb-0"> Qty : ${panierShop[index].quantity} </p>
+                    <p class="quantity card-text mb-0"> Qty : ${orderShop.contact.basket[index].quantity} </p>
                 </div>
             </div>
             <div class="col-md-2">
                 <div>
-                    <p class="total card-text">${'Total : ' + (panierShop[index].price / 100) * panierShop[index].quantity + '€'}</p>
+                    <p class="total card-text">${'Total : ' + (orderShop.contact.basket[index].price / 100) * orderShop.contact.basket[index].quantity + '€'}</p>
                 </div>
             </div>
         </div>
     </div>`;
 }
-document.querySelector('#total').textContent = totalProductPrice();
+//########################################################################
+//########################################################################
+//########################################################################
+document.querySelector('#total').textContent = totalOrderProductPrice();
 
-
-//----------------------------------------------------------------------
+//########################################################################
+//########################################################################
+//########################################################################
  let indexReturn = document.querySelector('#indexReturn');
  let indexBtn = document.querySelector('#indexBtn');
  let logoBtn = document.querySelector('#logoBackIndex');
