@@ -7,12 +7,14 @@ function getTotalQuantityLocalStorage(){
     const panierShop = JSON.parse(window.localStorage.getItem('panier'))
 
     let quantity = 0;
-
-    panierShop.forEach(product => {
+    if (panierShop == null) {
+        return 0;
+    }else{
+        panierShop.forEach(product => {
         quantity += product.quantity;
     });
     return quantity;
-    
+    }
 }
 
 //########################################################################
@@ -80,6 +82,7 @@ function sendOrderCustomer(e){
     orderForm.classList.add('was-validated')
 
     if (!orderForm.checkValidity()) {
+        alert("Vous n'avez pas fini de remplir le formulaire ou \"Accepter les Termes et conditions\" !")
         return;
     }
 
@@ -128,7 +131,7 @@ function sendOrderCustomer(e){
             window.sessionStorage.setItem('orderBuy', JSON.stringify(orderBuy));
             //localStorage.clear();
             if (orderBuy == null) {
-                alert("Vous n'avez pas fini remplir le formulaire !")
+                alert("Vous n'avez pas fini de remplir le formulaire !")
             }else{
                 window.location.assign("http://127.0.0.1:5500/RenaudGaetan_5_17072021/public/order/order.html");
                 window.localStorage.clear();
