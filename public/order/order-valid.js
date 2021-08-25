@@ -1,7 +1,7 @@
 
 //Ici je recup le LocalStorage avec PARSE sur mon Items "orderBuy" (array de product)
 const orderShop = JSON.parse(sessionStorage.getItem("orderBuy"));
-console.log(orderShop);
+//console.log(orderShop);
 
 //ICI Je crée une liaision avec mon HTML 
 const orderCustomer = document.querySelector('#detail-customer')
@@ -10,9 +10,10 @@ const orderCustomer = document.querySelector('#detail-customer')
 //ICI j'injecte mon HTML avec les donnée de "orderBuy"
 orderCustomer.innerHTML = 
     `<div id="detail-customer" class="d-flex row">
-    <p>Votre commande viens d'être confirmée <span class="bg-orinoco">${orderShop.contact.firstName} ${orderShop.contact.lastName}</span> !</p>
-    <p>Numéro de commande : <span class="bg-orinoco">${orderShop.orderId}</span></p>
-    <p class="px-3">Adresse de Livraison :<br><span class=" card w-25 bg-orinoco">${orderShop.contact.lastName}<br>${orderShop.contact.firstName}<br>${orderShop.contact.address}<br>${orderShop.contact.zip}<br>${orderShop.contact.city}</span></p>
+    <p>Votre commande viens d'être confirmée <strong><span class="bg-orinoco">${orderShop.contact.firstName} ${orderShop.contact.lastName}</span></strong> !</p>
+    <p>Numéro de commande : <strong><span class="bg-orinoco">${orderShop.orderId}</span></strong></p>
+    <p>Un e-mail de confirmation de commande viens de vous être envoyé à : <strong><span id="orderEmail" class="bg-orinoco">${orderShop.contact.email}</span></strong></p>
+    <p class="px-3">Adresse de Livraison :<br><strong><span class=" card w-25 bg-orinoco">${orderShop.contact.lastName} ${orderShop.contact.firstName}<br>${orderShop.contact.address}<br>${orderShop.contact.zip} ${orderShop.contact.city}</span></strong></p>
     </div>`
 ;
 
@@ -48,7 +49,7 @@ for (let index = 0; index < orderShop.contact.basket.length; index++) {
             </div>
             <div class="col-md-2">
                 <div class=" d-flex align-items-center justify-content-center">
-                    <p class="quantity card-text mb-0"> Qty : ${orderShop.contact.basket[index].quantity} </p>
+                    <p class="quantity card-text mb-0"> Qte : ${orderShop.contact.basket[index].quantity} </p>
                 </div>
             </div>
             <div class="col-md-2">

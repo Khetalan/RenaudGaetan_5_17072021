@@ -13,7 +13,7 @@ fetch(`http://localhost:3000/api/cameras/${search_params}`)
         
         //On Défini à quoi correspond la variable "Lenses" avec les donnée de l'API
         const lenses = camera.lenses;
-
+        
         //Ont Défini une variable vide pour ajouter les "Données des Lentilles" avec interpolation
         let text = "";
 
@@ -47,13 +47,13 @@ fetch(`http://localhost:3000/api/cameras/${search_params}`)
 
 
                 //Bouton(addShop) + Fonction qui ajoute le produit dans le "LocalStorage"//
-                    //Ont va chercher le Bouton sur lequel ont doit "cliquer" pour ajouter ua panier//
+                    //Ont va chercher le Bouton sur lequel ont doit "cliquer" pour ajouter au panier//
                 let addShop = document.querySelector('.addShop');
 
                     //Ont verifie que le bouton s'affiche bien dans la console
-                    console.log(addShop);
+                    //console.log(addShop);
 
-                    //Ont défnie un evement ('click') sur le bouton avec une -- fonction Fléchée --
+                    //Ont défnie un evement ('click') sur le bouton 
                     addShop.addEventListener('click', () => {
 
                         //AJOUT DU PRODUIT EN LocalStorage + conversion JSON)
@@ -95,3 +95,6 @@ fetch(`http://localhost:3000/api/cameras/${search_params}`)
 
                     })       
     })
+    .catch(function(error) { 
+        console.error(error)
+    });

@@ -62,7 +62,7 @@ fetch("http://localhost:3000/api/cameras")
 //########################################################################
 //########################################################################
 
-//On Injecte la fonction pour le résulat entre le Price*Quantity dans le TEXTE du HTML(A coter du Logo Panier>(0)<)      
+//On Injecte la fonction pour le résulat entre le Price*Quantity dans le TEXTE du HTML      
 document.querySelector('#total').textContent = totalProductPrice();
 
 //########################################################################

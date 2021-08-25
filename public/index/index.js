@@ -4,9 +4,9 @@ fetch("http://localhost:3000/api/cameras")
     })
     .then(function(listCameras){
         const listProducts = document.getElementById("list-products")
-
+        //console.log(listCameras);
         let text = "";
-
+        
 
         for (let index = 0; index < listCameras.length; index++) {
             //Recuperation de chaque elements de la liste de cameras//
@@ -36,3 +36,6 @@ fetch("http://localhost:3000/api/cameras")
         listProducts.innerHTML = text;
 
     })
+    .catch(function(error) { 
+        console.error(error)
+    });
